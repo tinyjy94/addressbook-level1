@@ -213,6 +213,11 @@ public class AddressBook {
         showWelcomeMessage();
         processProgramArgs(args);
         loadDataFromStorage();
+        Main_Commands();
+        return;
+    }
+
+    private static void Main_Commands() {
         while (true) {
             String userCommand = getUserInput();
             echoUserCommand(userCommand);
