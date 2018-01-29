@@ -139,18 +139,15 @@ public class AddressBook {
 
     /* We use a String array to store details of a single person.
      * The constants given below are the indexes for the different data elements of a person
-     * used by the internal String[] storage format.
-     * For example, a person's name is stored as the 0th element in the array.
+     * to be used by HashMap<String, String>.
+     * For example, a person's name is stored in Name in HashMap<PERSON_NAME, Name>.
+     * Likewise,a person's phone is stored in Phone in HashMap<PERSON_PHONE, Phone>.
+     * And, a person's email is stored in Email in HashMap<PERSON_EMAIL, Email>.
      */
 
     private static final String PERSON_NAME = "Name";
-    private static final String PERSON_PHONE = "phone";
-    private static final String PERSON_EMAIL = "email";
-
-    /**
-     * The number of data elements for a single person.
-     */
-    private static final int PERSON_DATA_COUNT = 3;
+    private static final String PERSON_PHONE = "Phone";
+    private static final String PERSON_EMAIL = "Email";
 
     /**
      * Offset required to convert between 1-indexing and 0-indexing.COMMAND_
@@ -172,8 +169,8 @@ public class AddressBook {
 
     /*
      * NOTE : =============================================================================================
-     * Note that the type of the variable below can also be declared as List<String[]>, as follows:
-     *    private static final List<String[]> ALL_PERSONS = new ArrayList<>()
+     * Note that the type of the variable below can also be declared as ArrayList<HashMap<String, String>>, as follows:
+     *    private static final ArrayList<HashMap<String, String>> ALL_PERSONS = new ArrayList<>()
      * That is because List is an interface implemented by the ArrayList class.
      * In this code we use ArrayList instead because we wanted to to stay away from advanced concepts
      * such as interface inheritance.
@@ -184,7 +181,7 @@ public class AddressBook {
      * List of all persons in the address book.
      */
 
-    private static final ArrayList<HashMap<String,String>> ALL_PERSONS = new ArrayList<>();
+    private static final ArrayList<HashMap<String, String>> ALL_PERSONS = new ArrayList<>();
 
     /**
      * Stores the most recent list of persons shown to the user as a result of a user command.
@@ -869,12 +866,11 @@ public class AddressBook {
     }
 
     /**
-     * Creates a person from the given data.
+     * Creates a person HashMap from the given data.
      *
      * @param name of person
      * @param phone without data prefix
      * @param email without data prefix
-     * @return constructed person
      */
     private static HashMap<String, String> makePersonFromData(String name, String phone, String email) {
         final HashMap<String, String> person = new HashMap<String, String>();
