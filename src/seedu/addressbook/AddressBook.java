@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Hashmap;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Scanner;
@@ -184,7 +184,7 @@ public class AddressBook {
      * List of all persons in the address book.
      */
 
-    private static final ArrayList<Hashmap<String,String>> ALL_PERSONS = new ArrayList<>();
+    private static final ArrayList<HashMap<String,String>> ALL_PERSONS = new ArrayList<>();
 
     /**
      * Stores the most recent list of persons shown to the user as a result of a user command.
@@ -847,7 +847,7 @@ public class AddressBook {
      * @param person whose name you want
      */
     private static String getNameFromPerson(HashMap<String, String> person) {
-        return person[PERSON_DATA_INDEX_NAME];
+        return person.get(PERSON_NAME);
     }
 
     /**
@@ -856,7 +856,7 @@ public class AddressBook {
      * @param person whose phone number you want
      */
     private static String getPhoneFromPerson(HashMap<String, String> person) {
-        return person[PERSON_DATA_INDEX_PHONE];
+        return person.get(PERSON_PHONE);
     }
 
     /**
@@ -865,7 +865,7 @@ public class AddressBook {
      * @param person whose email you want
      */
     private static String getEmailFromPerson(HashMap<String, String> person) {
-        return person[PERSON_DATA_INDEX_EMAIL];
+        return person.get(PERSON_EMAIL);
     }
 
     /**
@@ -877,7 +877,7 @@ public class AddressBook {
      * @return constructed person
      */
     private static HashMap<String, String> makePersonFromData(String name, String phone, String email) {
-        final HashMap<String, String> person = new Hashmap<String, String>();
+        final HashMap<String, String> person = new HashMap<String, String>();
         person.put(PERSON_NAME, name);
         person.put(PERSON_PHONE, phone);
         person.put(PERSON_EMAIL, email);
@@ -1037,9 +1037,9 @@ public class AddressBook {
      * @param person String array representing the person (used in internal data)
      */
     private static boolean isPersonDataValid(HashMap<String, String> person) {
-        return isPersonNameValid(person[PERSON_DATA_INDEX_NAME])
-                && isPersonPhoneValid(person[PERSON_DATA_INDEX_PHONE])
-                && isPersonEmailValid(person[PERSON_DATA_INDEX_EMAIL]);
+        return isPersonNameValid(person.get(PERSON_NAME))
+                && isPersonPhoneValid(person.get(PERSON_PHONE))
+                && isPersonEmailValid(person.get(PERSON_EMAIL));
     }
 
     /*
