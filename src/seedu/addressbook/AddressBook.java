@@ -344,11 +344,11 @@ public class AddressBook {
     }
 
     /**
-     * Initialises the in-memory data using the storage file.
+     * Initializes the in-memory data using the storage file.
      * Assumption: The file exists.
      */
     private static void loadDataFromStorage() {
-        initialiseAddressBookModel(loadPersonsFromFile(storageFilePath));
+        initializeAddressBookModel(loadPersonsFromFile(storageFilePath));
     }
 
 
@@ -819,9 +819,9 @@ public class AddressBook {
     /**
      * Resets the internal model with the given data. Does not save to file.
      *
-     * @param persons list of persons to initialise the model with
+     * @param persons list of persons to initialize the model with
      */
-    private static void initialiseAddressBookModel(ArrayList<String[]> persons) {
+    private static void initializeAddressBookModel(ArrayList<String[]> persons) {
         ALL_PERSONS.clear();
         ALL_PERSONS.addAll(persons);
     }
