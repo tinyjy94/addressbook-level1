@@ -140,13 +140,13 @@ public class AddressBook {
     /* We use a String array to store details of a single person.
      * The constants given below are the indexes for the different data elements of a person
      * to be used by HashMap<String, String>.
-     * For example, a person's name is stored in Name in HashMap<PERSON_NAME, Name>.
-     * Likewise, a person's phone is stored in Phone in HashMap<PERSON_PHONE, Phone>.
-     * And, a person's email is stored in Email in HashMap<PERSON_EMAIL, Email>.
+     * For example, a person's name is stored in Name in HashMap<PERSON_PROPERTY_NAME, Name>.
+     * Likewise, a person's phone is stored in Phone in HashMap<PERSON_PROPERTY_PHONE, Phone>.
+     * And, a person's email is stored in Email in HashMap<PERSON_PROPERTY_EMAIL, Email>.
      */
-    private static final String PERSON_NAME = "Name";
-    private static final String PERSON_PHONE = "Phone";
-    private static final String PERSON_EMAIL = "Email";
+    private static final String PERSON_PROPERTY_NAME = "Name";
+    private static final String PERSON_PROPERTY_PHONE = "Phone";
+    private static final String PERSON_PROPERTY_EMAIL = "Email";
 
     /**
      * Offset required to convert between 1-indexing and 0-indexing.COMMAND_
@@ -837,7 +837,7 @@ public class AddressBook {
      * @param person whose name you want
      */
     private static String getNameFromPerson(HashMap<String, String> person) {
-        return person.get(PERSON_NAME);
+        return person.get(PERSON_PROPERTY_NAME);
     }
 
     /**
@@ -846,7 +846,7 @@ public class AddressBook {
      * @param person whose phone number you want
      */
     private static String getPhoneFromPerson(HashMap<String, String> person) {
-        return person.get(PERSON_PHONE);
+        return person.get(PERSON_PROPERTY_PHONE);
     }
 
     /**
@@ -855,7 +855,7 @@ public class AddressBook {
      * @param person whose email you want
      */
     private static String getEmailFromPerson(HashMap<String, String> person) {
-        return person.get(PERSON_EMAIL);
+        return person.get(PERSON_PROPERTY_EMAIL);
     }
 
     /**
@@ -868,9 +868,9 @@ public class AddressBook {
      */
     private static HashMap<String, String> makePersonFromData(String name, String phone, String email) {
         final HashMap<String, String> person = new HashMap<String, String>();
-        person.put(PERSON_NAME, name);
-        person.put(PERSON_PHONE, phone);
-        person.put(PERSON_EMAIL, email);
+        person.put(PERSON_PROPERTY_NAME, name);
+        person.put(PERSON_PROPERTY_PHONE, phone);
+        person.put(PERSON_PROPERTY_EMAIL, email);
         return person;
     }
 
@@ -1027,9 +1027,9 @@ public class AddressBook {
      * @param person String array representing the person (used in internal data)
      */
     private static boolean isPersonDataValid(HashMap<String, String> person) {
-        return isPersonNameValid(person.get(PERSON_NAME))
-                && isPersonPhoneValid(person.get(PERSON_PHONE))
-                && isPersonEmailValid(person.get(PERSON_EMAIL));
+        return isPersonNameValid(person.get(PERSON_PROPERTY_NAME))
+                && isPersonPhoneValid(person.get(PERSON_PROPERTY_PHONE))
+                && isPersonEmailValid(person.get(PERSON_PROPERTY_EMAIL));
     }
 
     /*
